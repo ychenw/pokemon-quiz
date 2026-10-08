@@ -1,0 +1,15 @@
+{
+  "name": "pokequiz",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A bilingual GBA-style Pokémon recognition quiz",
+  "scripts": {
+    "format": "prettier --write index.html assets/css/**/*.css assets/js/**/*.js",
+    "format:check": "prettier --check index.html assets/css/**/*.css assets/js/**/*.js",
+    "test": "node --experimental-vm-modules --test tests/*.test.cjs"
+  },
+  "devDependencies": {
+    "prettier": "3.6.2"
+  }
+}

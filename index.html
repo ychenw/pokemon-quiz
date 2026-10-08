@@ -1,51 +1,330 @@
 <!doctype html>
 <html lang="zh-CN">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PokéQuiz · 宝可梦初代151答题</title>
-<meta name="description" content="PokéQuiz：认识初代151只宝可梦。经典训练、极速挑战、可佩戴成就徽章，中英双语。">
-<meta name="theme-color" content="#e8ebec">
-<link rel="stylesheet" href="./styles.css?v=20261009">
-<script src="./app.js?v=20261009" defer></script>
-</head>
-<body>
-<div id="pk-explore">
- <div class="px-shell">
-  <header class="px-header"><div class="px-brand"><span class="px-pokeball" aria-hidden="true"><i></i></span><div class="px-brandtext">PokéQuiz <span>/ KANTO</span></div></div><div class="px-language-switch" aria-label="语言"><button id="px-lang-en" type="button" class="cursor-interaction" aria-pressed="false">EN</button><span>–</span><button id="px-lang-zh" type="button" class="cursor-interaction" aria-pressed="true">中</button></div></header>
-  <main id="px-home">
-   <section class="px-intro"><div><p class="px-eyebrow">你的关都训练之旅</p><h1>PokéQuiz</h1></div><div class="px-trainer"><button class="px-avatar cursor-interaction" id="px-avatar" aria-label="更换头像与边框">?</button><button id="px-account" class="px-account cursor-interaction"><strong id="px-greeting"><span id="px-greeting-label">创建你的训练家档案</span><span id="px-greeting-name" data-no-translate hidden></span></strong><span id="px-equipped-badge"></span></button></div></section>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PokéQuiz · 宝可梦初代151答题</title>
+    <meta
+      name="description"
+      content="PokéQuiz：认识初代151只宝可梦。经典训练、极速挑战、可佩戴成就徽章，中英双语。"
+    />
+    <meta name="theme-color" content="#e8ebec" />
+    <link rel="stylesheet" href="./assets/css/main.css?v=20261009-modules" />
+    <script type="module" src="./assets/js/main.js?v=20261009-modules"></script>
+  </head>
+  <body>
+    <div id="pk-explore">
+      <div class="px-shell">
+        <header class="px-header">
+          <div class="px-brand">
+            <span class="px-pokeball" aria-hidden="true"><i></i></span>
+            <div class="px-brandtext">PokéQuiz <span>/ KANTO</span></div>
+          </div>
+          <div class="px-language-switch" aria-label="语言">
+            <button id="px-lang-en" type="button" class="cursor-interaction" aria-pressed="false">
+              EN</button
+            ><span>–</span
+            ><button id="px-lang-zh" type="button" class="cursor-interaction" aria-pressed="true">
+              中
+            </button>
+          </div>
+        </header>
+        <main id="px-home">
+          <section class="px-intro">
+            <div>
+              <p class="px-eyebrow">你的关都训练之旅</p>
+              <h1>PokéQuiz</h1>
+            </div>
+            <div class="px-trainer">
+              <button
+                class="px-avatar cursor-interaction"
+                id="px-avatar"
+                aria-label="更换头像与边框"
+              >
+                ?</button
+              ><button id="px-account" class="px-account cursor-interaction">
+                <strong id="px-greeting"
+                  ><span id="px-greeting-label">创建你的训练家档案</span
+                  ><span id="px-greeting-name" data-no-translate hidden></span></strong
+                ><span id="px-equipped-badge"></span>
+              </button>
+            </div>
+          </section>
 
-   <section class="px-modes"><div class="px-sectiontitle"><h2>选择今天的训练</h2></div>
-    <div class="px-modegrid">
-     <article class="px-mode" data-mode="classic" aria-pressed="true"><button class="px-mode-select cursor-interaction" type="button" aria-label="选择经典训练" aria-pressed="true"></button><div class="px-modehead"><strong>完整图鉴</strong><span class="px-tag">经典训练</span></div><div class="px-mode-number">151 <small>题 / 轮</small></div><p>随机认识全部初代宝可梦<br>不计时，按照自己的节奏练习</p><div class="px-modefoot"><span>默认模式</span><button id="px-start" class="px-primary px-startmode cursor-interaction" type="button" data-start-mode="classic">开始训练</button></div></article>
-     <article class="px-mode" data-mode="sprint" aria-pressed="false"><button class="px-mode-select cursor-interaction" type="button" aria-label="选择极速挑战" aria-pressed="false"></button><div class="px-modehead"><strong>与时间赛跑</strong><span class="px-tag">极速挑战</span></div><div class="px-mode-number">15 <small>题 / 轮</small></div><p>随机抽取 15 只，记录总用时<br>全答对，冲击个人最佳成绩</p><div class="px-modefoot"><span>计时挑战</span><button class="px-primary px-startmode cursor-interaction" type="button" data-start-mode="sprint" hidden>开始训练</button></div></article>
-     <article class="px-mode" data-mode="advanced" aria-pressed="false"><button class="px-mode-select cursor-interaction" type="button" aria-label="选择进阶训练" aria-pressed="false"></button><div class="px-modehead"><strong>再多认识一点</strong><span class="px-tag">进阶训练</span></div><div class="px-mode-number">50 <small>题 / 轮</small></div><p>随机抽取 50 只，不重复出题<br>适合想集中练习的训练家</p><div class="px-modefoot"><span>不计时</span><button class="px-primary px-startmode cursor-interaction" type="button" data-start-mode="advanced" hidden>开始训练</button></div></article>
+          <section class="px-modes">
+            <div class="px-sectiontitle"><h2>选择今天的训练</h2></div>
+            <div class="px-modegrid">
+              <article class="px-mode" data-mode="classic" aria-pressed="true">
+                <button
+                  class="px-mode-select cursor-interaction"
+                  type="button"
+                  aria-label="选择经典训练"
+                  aria-pressed="true"
+                ></button>
+                <div class="px-modehead">
+                  <strong>完整图鉴</strong><span class="px-tag">经典训练</span>
+                </div>
+                <div class="px-mode-number">151 <small>题 / 轮</small></div>
+                <p>随机认识全部初代宝可梦<br />不计时，按照自己的节奏练习</p>
+                <div class="px-modefoot">
+                  <span>默认模式</span
+                  ><button
+                    id="px-start"
+                    class="px-primary px-startmode cursor-interaction"
+                    type="button"
+                    data-start-mode="classic"
+                  >
+                    开始训练
+                  </button>
+                </div>
+              </article>
+              <article class="px-mode" data-mode="sprint" aria-pressed="false">
+                <button
+                  class="px-mode-select cursor-interaction"
+                  type="button"
+                  aria-label="选择极速挑战"
+                  aria-pressed="false"
+                ></button>
+                <div class="px-modehead">
+                  <strong>与时间赛跑</strong><span class="px-tag">极速挑战</span>
+                </div>
+                <div class="px-mode-number">15 <small>题 / 轮</small></div>
+                <p>随机抽取 15 只，记录总用时<br />全答对，冲击个人最佳成绩</p>
+                <div class="px-modefoot">
+                  <span>计时挑战</span
+                  ><button
+                    class="px-primary px-startmode cursor-interaction"
+                    type="button"
+                    data-start-mode="sprint"
+                    hidden
+                  >
+                    开始训练
+                  </button>
+                </div>
+              </article>
+              <article class="px-mode" data-mode="advanced" aria-pressed="false">
+                <button
+                  class="px-mode-select cursor-interaction"
+                  type="button"
+                  aria-label="选择进阶训练"
+                  aria-pressed="false"
+                ></button>
+                <div class="px-modehead">
+                  <strong>再多认识一点</strong><span class="px-tag">进阶训练</span>
+                </div>
+                <div class="px-mode-number">50 <small>题 / 轮</small></div>
+                <p>随机抽取 50 只，不重复出题<br />适合想集中练习的训练家</p>
+                <div class="px-modefoot">
+                  <span>不计时</span
+                  ><button
+                    class="px-primary px-startmode cursor-interaction"
+                    type="button"
+                    data-start-mode="advanced"
+                    hidden
+                  >
+                    开始训练
+                  </button>
+                </div>
+              </article>
+            </div>
+          </section>
+          <section class="px-bottom">
+            <div class="px-sectiongroup">
+              <div class="px-sectiontitle"><h2>训练家成就</h2></div>
+              <div class="px-achievements" id="px-achievements-panel">
+                <div id="px-badges" class="px-badges"></div>
+                <div class="px-collection-row">
+                  <div class="px-home-tabs" role="tablist" aria-label="训练家收藏">
+                    <button
+                      id="px-home-avatars"
+                      class="cursor-interaction"
+                      type="button"
+                      role="tab"
+                      aria-selected="true"
+                      aria-controls="px-reward-preview"
+                    >
+                      头像</button
+                    ><button
+                      id="px-home-frames"
+                      class="cursor-interaction"
+                      type="button"
+                      role="tab"
+                      aria-selected="false"
+                      aria-controls="px-reward-preview"
+                    >
+                      边框
+                    </button>
+                  </div>
+                  <button id="px-collection-open" class="px-textbtn cursor-interaction">
+                    查看更多 →
+                  </button>
+                </div>
+                <div id="px-reward-preview" role="tabpanel" aria-labelledby="px-home-avatars"></div>
+              </div>
+            </div>
+            <div class="px-sectiongroup">
+              <div class="px-sectiontitle"><h2>最近训练</h2></div>
+              <div class="px-history" id="px-history-panel">
+                <div id="px-history">
+                  <div id="px-history-list"></div>
+                  <p id="px-history-message" aria-live="polite" hidden></p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <footer class="px-footer"><span>关都图鉴 · #001 — #151</span></footer>
+        </main>
+        <main id="px-game" hidden>
+          <div class="px-gamebar">
+            <button id="px-back" class="px-textbtn cursor-interaction">← 保存并返回</button
+            ><span id="px-timer"></span>
+          </div>
+          <div id="px-gamefit" class="px-gamefit">
+            <div id="px-gamebody" class="px-gamebody">
+              <div class="px-gameheading">
+                <p class="px-eyebrow" id="px-game-mode"></p>
+                <h1>仔细观察，试着叫出它的名字。</h1>
+                <div class="px-progresshead">
+                  <span id="px-question-number"></span><span id="px-session-score"></span>
+                </div>
+                <div class="px-progress"><div id="px-fill"></div></div>
+              </div>
+              <div class="px-deck" id="px-deck">
+                <button
+                  id="px-prev"
+                  class="px-stack px-left cursor-interaction"
+                  aria-label="上一题"
+                  hidden
+                >
+                  ←</button
+                ><button
+                  id="px-next"
+                  class="px-stack px-right cursor-interaction"
+                  aria-label="下一题"
+                  hidden
+                >
+                  →
+                </button>
+                <div id="px-front" class="px-front">
+                  <img id="px-picture" alt="待识别的宝可梦" draggable="false" />
+                  <div class="px-answer">
+                    <h2 id="px-answer-name">?</h2>
+                    <p id="px-clue"></p>
+                  </div>
+                </div>
+              </div>
+              <div class="px-command">
+                <form id="px-form">
+                  <label for="px-name">宝可梦叫什么名字？</label
+                  ><input
+                    id="px-name"
+                    placeholder="宝可梦名称"
+                    autocomplete="off"
+                    spellcheck="false"
+                  />
+                  <p id="px-feedback" aria-live="polite"></p>
+                  <button id="px-confirm" class="px-primary cursor-interaction" type="submit">
+                    确认名称
+                  </button>
+                </form>
+                <button id="px-reveal" class="px-secondary cursor-interaction">
+                  不会，揭晓答案
+                </button>
+              </div>
+            </div>
+          </div>
+        </main>
+        <main id="px-result" hidden>
+          <div class="px-results">
+            <p class="px-eyebrow">本轮训练完成</p>
+            <h1 id="px-result-title">做得不错，训练家。</h1>
+            <div class="px-resultscore">
+              <strong id="px-result-score"></strong><span>独立答对</span>
+            </div>
+            <p id="px-result-detail"></p>
+            <div id="px-new-badges"></div>
+            <button id="px-again" class="px-primary cursor-interaction">开始新的随机一轮</button
+            ><button id="px-home-btn" class="px-secondary cursor-interaction">返回训练中心</button>
+          </div>
+        </main>
+      </div>
+      <div id="px-dialog" class="px-dialog" hidden>
+        <section
+          class="px-dialogcard"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="px-login-title"
+        >
+          <button id="px-close" class="px-close cursor-interaction" aria-label="关闭">×</button>
+          <p class="px-eyebrow">TRAINER PROFILE</p>
+          <h2 id="px-login-title">创建你的训练家档案</h2>
+          <p>为你的训练记录取一个名字。</p>
+          <form id="px-login-form">
+            <label for="px-nickname">训练家昵称</label
+            ><input id="px-nickname" maxlength="16" placeholder="例如：Zoey" required />
+            <p class="px-local-note">
+              本地账号演示，无需密码。相同昵称可重新进入档案；暂不支持跨设备同步。
+            </p>
+            <button class="px-primary cursor-interaction" type="submit">登录 / 创建档案</button>
+          </form>
+          <div class="px-profile-actions" id="px-profile-actions" hidden>
+            <button id="px-profile-collection" class="px-secondary cursor-interaction">
+              更换头像 / 边框
+            </button>
+          </div>
+          <button id="px-logout" class="px-secondary cursor-interaction" hidden>切换为游客</button>
+          <div id="px-profiles"></div>
+        </section>
+      </div>
+      <div id="px-collection-dialog" class="px-dialog px-collection-dialog" hidden>
+        <section
+          class="px-dialogcard"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="px-collection-title"
+        >
+          <button id="px-collection-close" class="px-close cursor-interaction" aria-label="关闭">
+            ×
+          </button>
+          <p class="px-eyebrow">TRAINER COLLECTION</p>
+          <h2 id="px-collection-title">把成长，变成你的样子。</h2>
+          <div class="px-collection-tabs">
+            <button id="px-tab-avatars" class="cursor-interaction" aria-pressed="true">
+              宝可梦头像</button
+            ><button id="px-tab-frames" class="cursor-interaction" aria-pressed="false">
+              头像边框</button
+            ><button id="px-tab-badges" class="cursor-interaction" aria-pressed="false">
+              成就徽章</button
+            ><button id="px-tab-seasonal" class="cursor-interaction" aria-pressed="false">
+              季节限定
+            </button>
+          </div>
+          <div class="px-collection-grid" id="px-collection-grid"></div>
+          <p id="px-collection-message" aria-live="polite"></p>
+        </section>
+      </div>
+      <div id="px-badge-detail" class="px-dialog" hidden>
+        <section
+          class="px-dialogcard px-badge-info"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="px-badge-detail-title"
+        >
+          <button id="px-badge-detail-close" class="px-close cursor-interaction" aria-label="关闭">
+            ×
+          </button>
+          <p class="px-eyebrow">TRAINER BADGE</p>
+          <h2 id="px-badge-detail-title"></h2>
+          <div id="px-badge-preview"></div>
+          <p id="px-badge-design-note"></p>
+          <p id="px-badge-detail-copy"></p>
+          <p id="px-badge-detail-reward"></p>
+          <span id="px-badge-detail-state"></span
+          ><button type="button" id="px-badge-equip" class="px-primary cursor-interaction" disabled>
+            解锁后可佩戴
+          </button>
+        </section>
+      </div>
     </div>
-   </section>
-<section class="px-bottom">
-    <div class="px-sectiongroup"><div class="px-sectiontitle"><h2>训练家成就</h2></div><div class="px-achievements" id="px-achievements-panel"><div id="px-badges" class="px-badges"></div>
-     <div class="px-collection-row"><div class="px-home-tabs" role="tablist" aria-label="训练家收藏"><button id="px-home-avatars" class="cursor-interaction" type="button" role="tab" aria-selected="true" aria-controls="px-reward-preview">头像</button><button id="px-home-frames" class="cursor-interaction" type="button" role="tab" aria-selected="false" aria-controls="px-reward-preview">边框</button></div><button id="px-collection-open" class="px-textbtn cursor-interaction">查看更多 →</button></div>
-     <div id="px-reward-preview" role="tabpanel" aria-labelledby="px-home-avatars"></div>
-    </div></div>
-    <div class="px-sectiongroup"><div class="px-sectiontitle"><h2>最近训练</h2></div><div class="px-history" id="px-history-panel"><div id="px-history"><div id="px-history-list"></div><p id="px-history-message" aria-live="polite" hidden></p></div></div></div>
-   </section>
-   <footer class="px-footer"><span>关都图鉴 · #001 — #151</span></footer>
-  </main>
-  <main id="px-game" hidden>
-   <div class="px-gamebar"><button id="px-back" class="px-textbtn cursor-interaction">← 保存并返回</button><span id="px-timer"></span></div>
-   <div id="px-gamefit" class="px-gamefit"><div id="px-gamebody" class="px-gamebody"><div class="px-gameheading"><p class="px-eyebrow" id="px-game-mode"></p><h1>仔细观察，试着叫出它的名字。</h1><div class="px-progresshead"><span id="px-question-number"></span><span id="px-session-score"></span></div><div class="px-progress"><div id="px-fill"></div></div></div>
-    <div class="px-deck" id="px-deck"><button id="px-prev" class="px-stack px-left cursor-interaction" aria-label="上一题" hidden>←</button><button id="px-next" class="px-stack px-right cursor-interaction" aria-label="下一题" hidden>→</button><div id="px-front" class="px-front"><img id="px-picture" alt="待识别的宝可梦" draggable="false"><div class="px-answer"><h2 id="px-answer-name">?</h2><p id="px-clue"></p></div></div></div>
-    <div class="px-command"><form id="px-form"><label for="px-name">宝可梦叫什么名字？</label><input id="px-name" placeholder="宝可梦名称" autocomplete="off" spellcheck="false"><p id="px-feedback" aria-live="polite"></p><button id="px-confirm" class="px-primary cursor-interaction" type="submit">确认名称</button></form><button id="px-reveal" class="px-secondary cursor-interaction">不会，揭晓答案</button></div>
-   </div></div>
-  </main>
-  <main id="px-result" hidden><div class="px-results"><p class="px-eyebrow">本轮训练完成</p><h1 id="px-result-title">做得不错，训练家。</h1><div class="px-resultscore"><strong id="px-result-score"></strong><span>独立答对</span></div><p id="px-result-detail"></p><div id="px-new-badges"></div><button id="px-again" class="px-primary cursor-interaction">开始新的随机一轮</button><button id="px-home-btn" class="px-secondary cursor-interaction">返回训练中心</button></div></main>
- </div>
- <div id="px-dialog" class="px-dialog" hidden><section class="px-dialogcard" role="dialog" aria-modal="true" aria-labelledby="px-login-title"><button id="px-close" class="px-close cursor-interaction" aria-label="关闭">×</button><p class="px-eyebrow">TRAINER PROFILE</p><h2 id="px-login-title">创建你的训练家档案</h2><p>为你的训练记录取一个名字。</p><form id="px-login-form"><label for="px-nickname">训练家昵称</label><input id="px-nickname" maxlength="16" placeholder="例如：Zoey" required><p class="px-local-note">本地账号演示，无需密码。相同昵称可重新进入档案；暂不支持跨设备同步。</p><button class="px-primary cursor-interaction" type="submit">登录 / 创建档案</button></form><div class="px-profile-actions" id="px-profile-actions" hidden><button id="px-profile-collection" class="px-secondary cursor-interaction">更换头像 / 边框</button></div><button id="px-logout" class="px-secondary cursor-interaction" hidden>切换为游客</button><div id="px-profiles"></div></section></div>
-<div id="px-collection-dialog" class="px-dialog px-collection-dialog" hidden><section class="px-dialogcard" role="dialog" aria-modal="true" aria-labelledby="px-collection-title"><button id="px-collection-close" class="px-close cursor-interaction" aria-label="关闭">×</button><p class="px-eyebrow">TRAINER COLLECTION</p><h2 id="px-collection-title">把成长，变成你的样子。</h2><div class="px-collection-tabs"><button id="px-tab-avatars" class="cursor-interaction" aria-pressed="true">宝可梦头像</button><button id="px-tab-frames" class="cursor-interaction" aria-pressed="false">头像边框</button><button id="px-tab-badges" class="cursor-interaction" aria-pressed="false">成就徽章</button><button id="px-tab-seasonal" class="cursor-interaction" aria-pressed="false">季节限定</button></div><div class="px-collection-grid" id="px-collection-grid"></div><p id="px-collection-message" aria-live="polite"></p></section></div><div id="px-badge-detail" class="px-dialog" hidden><section class="px-dialogcard px-badge-info" role="dialog" aria-modal="true" aria-labelledby="px-badge-detail-title"><button id="px-badge-detail-close" class="px-close cursor-interaction" aria-label="关闭">×</button><p class="px-eyebrow">TRAINER BADGE</p><h2 id="px-badge-detail-title"></h2><div id="px-badge-preview"></div><p id="px-badge-design-note"></p><p id="px-badge-detail-copy"></p><p id="px-badge-detail-reward"></p><span id="px-badge-detail-state"></span><button type="button" id="px-badge-equip" class="px-primary cursor-interaction" disabled>解锁后可佩戴</button></section></div>
-</div>
-
-
-
-</body>
+  </body>
 </html>
